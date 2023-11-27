@@ -80,7 +80,7 @@ const getSearchedTodos = (search) => {
 
     console.log(todoTitle);
 
-    if (!todoTitle.includes(search)) {
+    if (!todoTitle.includes(search.toLowerCase())) {
       todo.style.display = "none";
     }
   });
@@ -176,7 +176,7 @@ editForm.addEventListener("submit", (e) => {
   toggleForms();
 });
 
-searchInput.addEventListener("keyup", (e) => {
+searchInput.addEventListener("input", (e) => {
   const search = e.target.value;
 
   getSearchedTodos(search);
