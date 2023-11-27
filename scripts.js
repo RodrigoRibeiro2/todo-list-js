@@ -129,7 +129,7 @@ todoForm.addEventListener("submit", (e) => {
   }
 });
 
-document.addEventListener("click", (e) => {
+document.addEventListener("touchstart", (e) => {
   const targetEl = e.target;
   const parentEl = targetEl.closest("div");
   let todoTitle;
