@@ -159,7 +159,7 @@ document.addEventListener("touchstart", (e) => {
   }
 });
 
-cancelEditBtn.addEventListener("click", (e) => {
+cancelEditBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
   toggleForms();
 });
@@ -182,7 +182,7 @@ searchInput.addEventListener("input", (e) => {
   getSearchedTodos(search);
 });
 
-eraseBtn.addEventListener("click", (e) => {
+eraseBtn.addEventListener("touchstart", (e) => {
   e.preventDefault();
 
   searchInput.value = "";
