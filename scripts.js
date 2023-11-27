@@ -129,7 +129,7 @@ todoForm.addEventListener("submit", (e) => {
   }
 });
 
-document.addEventListener("touchstart", (e) => {
+document.addEventListener("click", (e) => {
   const targetEl = e.target;
   const parentEl = targetEl.closest("div");
   let todoTitle;
@@ -182,7 +182,7 @@ searchInput.addEventListener("input", (e) => {
   getSearchedTodos(search);
 });
 
-eraseBtn.addEventListener("touchstart", (e) => {
+eraseBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   searchInput.value = "";
