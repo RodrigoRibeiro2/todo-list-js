@@ -8,7 +8,7 @@
 }
 
 body {
-    background-image: url(gdt.jpg);
+   background-image: url(gdt.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -137,6 +137,7 @@ select {
     padding: 1rem 1rem;
     border-bottom: 1px solid #ddd;
     transition: 0.3s;
+    position: relative;
 }
 
 .todo h3 {
@@ -146,6 +147,34 @@ select {
 
 .todo button {
     margin-left: 0.4rem;
+}
+
+.favorite-todo {
+    background-color: #fdfdfd;
+    color: #102f5e;
+    border: 2px solid #102f5e;
+}
+
+.favorite-todo:hover {
+    background-color: #102f5e;
+}
+
+.favorite-todo:hover>i {
+    color: #fff;
+}
+
+.todo.favorite {
+    box-shadow: 0 0 10px gold; /* Adiciona uma sombra dourada */
+}
+
+.favorite-todo i {
+    pointer-events: none;
+    color: #102f5e;
+    font-weight: bold;
+}
+
+.favorite {
+    background-color: #f8f9fa; /* Cor de fundo para destacar favoritos */
 }
 
 .done {
