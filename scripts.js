@@ -35,6 +35,11 @@ const saveTodo = (text, done = 0, save = 1) => {
   deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   todo.appendChild(deleteBtn);
 
+  const favoriteBtn = document.createElement("button");
+  favoriteBtn.classList.add("favorite-todo");
+  favoriteBtn.innerHTML = '<i class="fa-solid fa-star"></i>';
+  todo.appendChild(favoriteBtn);
+
   // Utilizando dados da localStorage
   if (done) {
     todo.classList.add("done");
@@ -157,6 +162,12 @@ document.addEventListener("click", (e) => {
     editInput.value = todoTitle;
     oldInputValue = todoTitle;
   }
+
+  if (targetEl.classList.contains("favorite-todo")) {
+    parentEl.classList.toggle("favorite");
+    toggleFavorite(todoTitle);
+  }
+
 });
 
 cancelEditBtn.addEventListener("touchstart", (e) => {
@@ -193,7 +204,11 @@ eraseBtn.addEventListener("click", (e) => {
 filterBtn.addEventListener("change", (e) => {
   const filterValue = e.target.value;
 
-  filterTodos(filterValue);
+  if (filterValue === "favorite") {
+    filterFavoriteTodos();
+  } else {
+    filterTodos(filterValue);
+  }
 });
 
 // Local Storage
@@ -245,6 +260,32 @@ const updateTodoLocalStorage = (todoOldText, todoNewText) => {
   );
 
   localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+const toggleFavorite = (todoTitle) => {
+  const todos = getTodosLocalStorage();
+
+  todos.map((todo) => {
+    if (todo.text === todoTitle) {
+      todo.favorite = !todo.favorite;
+    }
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+const filterFavoriteTodos = () => {
+  const todos = document.querySelectorAll(".todo");
+
+  todos.forEach((todo) => {
+    const isFavorite = todo.classList.contains("favorite");
+
+    if (filterBtn.value === "favorite") {
+      todo.style.display = isFavorite ? "flex" : "none";
+    } else {
+      todo.style.display = "flex";
+    }
+  });
 };
 
 loadTodos();
